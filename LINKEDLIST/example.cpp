@@ -1,42 +1,54 @@
 //Link to problem:
-https://leetcode.com/problems/two-sum/
+https://leetcode.com/problems/merge-two-sorted-lists/
 
 
 //Problem statement:
-Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You are given the heads of two sorted linked lists list1 and list2.
 
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
+Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
 
-You can return the answer in any order.
+Return the head of the merged linked list.
 
   
 //Example:
-Input: nums = [2,7,11,15], target = 9
-Output: [0,1]
-Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
   
   
 //SOLUTION:
   
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int>res;
-        unordered_map<int,int>m;
-        for(int i=0;i<nums.size();i++)
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1==NULL)return list2;
+        if(list2==NULL)return list1;
+        if(list1->val>=list2->val)
+            swap(list1,list2);
+        ListNode*res=list1;
+        while(list1!=NULL && list2!=NULL)
         {
-            if(m.find(target-nums[i])!=m.end())
+            ListNode*temp=NULL;
+            while(list1!=NULL && list1->val<=list2->val)
             {
-                res.emplace_back(i);
-                res.emplace_back(m[target-nums[i]]);
-                return res;
+                temp=list1;
+                list1=list1->next;
             }
-        
-        m[nums[i]]=i;
+            temp->next=list2;
+            swap(list1,list2);
+            
         }
         return res;
     }
-    
 };
 
 
