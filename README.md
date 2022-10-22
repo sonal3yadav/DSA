@@ -11,6 +11,8 @@ Add your code in c++.
 
 Add appropriate title and description to your pull request explaining your changes and efforts done.
 
+After adding the code add your details in contributing.md file.
+
 # Owner
 
 Sonal Yadav
