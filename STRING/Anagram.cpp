@@ -1,6 +1,5 @@
 
-#include <iostream> 
-#include <string.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
 bool Anagram(string str1, string str2)
