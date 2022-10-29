@@ -1,0 +1,27 @@
+Problem Link
+https://leetcode.com/problems/power-of-two/
+
+Problem
+Given an integer n, return true if it is a power of two. Otherwise, return false.
+An integer n is a power of two, if there exists an integer x such that n == 2^x
+
+Sample Input 1
+n=1
+Sample Output 1
+true
+Explaination : 2^0 = 1
+
+Sample Input 2
+n=3
+Sample Output 2
+false
+
+Solution:
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if(n==0) return false;
+        while(n%2==0) n/=2;
+        return n==1;
+    }
+};
